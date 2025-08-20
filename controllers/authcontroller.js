@@ -130,10 +130,10 @@ export async function resetPassword(req, res) {
   }
   ad.updateUser(user.uid, { password: newPassword })
     .then(() => {
-      res.json({ message: "Password reset successfully" });
+     return res.json({ message: "Password reset successfully" });
     })
     .catch((error) => {
       console.error("Error updating user password:", error);
-      res.status(500).json({ message: "Error resetting password" });
+      return res.status(500).json({ message: "Error resetting password" });
     });
 }
