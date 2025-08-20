@@ -54,7 +54,7 @@ export async function forgetPassword(req, res) {
       state: "pending",
       attempts: 0,
       consumed: false,
-      sends:1
+      sends: Number(1)
     });
   }
 
