@@ -34,7 +34,7 @@ export async function forgetPassword(req, res) {
       return res
         .status(400)
         .json({ message: "Too many requests, try again later" });
-    } else if (dataNow < data.expiresAt) {
+    } else if (dataNow < data.expiresAt && data.sends > 1) {
       return res.status(400).json({
         message: "An OTP has already been sent. Please wait for it to expire.",
       });
