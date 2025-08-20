@@ -44,7 +44,7 @@ export async function forgetPassword(req, res) {
       expiresAt: Date.now() + 5 * 60 * 1000,
       state: "pending",
       consumed: false,
-      sends: data.sends + 1,
+      sends: data.sends + 1
     });
   } else {
     await db.collection("otps").doc(otpId).set({
@@ -54,7 +54,7 @@ export async function forgetPassword(req, res) {
       state: "pending",
       attempts: 0,
       consumed: false,
-      sends: 1,
+      sends:1
     });
   }
 
