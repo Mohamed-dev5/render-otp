@@ -9,9 +9,14 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export async function sendOtpEmail(to, otp) {
   const msg = {
     to,
-    from: "emotica.noreply@gmail.com",
-    subject: "Your OTP Code",
-    text: `Your OTP code is ${otp}. It is valid for 5 minutes.`,
+    from: 'emotica.noreply@gmail.com',
+    subject: 'Your OTP Code',
+    html: `
+      <p>Hello,</p>
+      <p>Your <strong>OTP code is <span style="font-size: 1.2em; color: #2E86C1;">${otp}</span></strong>. It is valid for <strong>5 minutes</strong>.</p>
+      <p>If you did not request this code, please ignore this email.</p>
+      <p>Thank you,<br/>Emotica Team</p>
+    `,
   };
   await sgMail.send(msg);
   try {
